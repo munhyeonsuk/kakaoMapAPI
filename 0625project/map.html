@@ -20,15 +20,18 @@
                 datType: "json",
                 success: function(mapinfo){
                     //  console.log("지점정보", mapinfo) 서버 콘솔창 통해 확인하기
+                    const clsnmkey = Object.keys(mapinfo[0]) // mapinfo[0] 객체의 모든 키를 배열로 반환
 
                     let maptag =``; //반드시 초기값 선언은 for, forEach 안에서 하지 않는다. 대입식도 역시 없다
 
                     mapinfo.forEach(function(ele, idx){
                         maptag += `<li>`
-                        maptag += `<h2 class="storenm"><strong >지점명</strong> <span>${mapinfo[idx].storenm}</span></h2>`;
-                        maptag += `<p class="storenm"><strong>지점명</strong> <span>${mapinfo[idx].storenm}</span></p>`
-                        maptag += `<p class="addr"><strong>주소</strong><span>${mapinfo[idx].addr}</span></p>`
+                        maptag += `<h2 class= '${clsnmkey[0]}'><strong >지점명</strong> <span>${ele.storenm}</span></h2>`;
+                        maptag += `<p class= '${clsnmkey[1]}'><strong>지점명</strong> <span>${ele.storenm}</span></p>`
+                        maptag += `<p class= '${clsnmkey[2]}'><strong>주소</strong><span>${ele.addr}</span></p>`
                         maptag += `</li>`
+
+                    
                     })
                        $("#store ul").html(maptag)
                 },
