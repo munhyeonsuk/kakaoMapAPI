@@ -8,12 +8,6 @@
 <body>
     <div id="store">
         <ul>
-            <li>
-                <h2 class="storenm"><strong >지점명</strong> <span>여기</span></h2>
-                <p class="storenm"><strong>지점명</strong> <span>여기</span></p>
-                <p class="addr"><strong>주소</strong><span>여기</span></p>
-        
-            </li>
         </ul>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -25,16 +19,19 @@
                 type: "GET",
                 datType: "json",
                 success: function(mapinfo){
-                    // console.log("지점정보", mapinfo) 서버통해 확인하기
-                    $(".storenm span").html(mapinfo[0].storenm)
-                    $(".storenm span").html(mapinfo[0].storenm)
-                    $(".addr span").html(mapinfo[0].addr)
+                    //  console.log("지점정보", mapinfo) 서버 콘솔창 통해 확인하기
+
+                   let maptag = `<h2 class="storenm"><strong >지점명</strong> <span>${mapinfo[0].storenm}</span></h2>`
+                       maptag += ` <p class="storenm"><strong>지점명</strong> <span>${mapinfo[0].storenm}</span></p>`
+                       maptag += `<p class="addr"><strong>주소</strong><span>${mapinfo[0].addr}</span></p>`
+                       $("#store ul").html(maptag)
                 },
                 error: function(){
 
                 }
             
             })
+            
         })
     </script>
 </body>
